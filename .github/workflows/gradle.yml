@@ -46,7 +46,7 @@ jobs:
       
     - name: extract version
       id: extract-version
-      run: "echo ::set-output name=version::$(gradle --console=plain -q printVersion)"
+      run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
       
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1.19
