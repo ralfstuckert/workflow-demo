@@ -42,7 +42,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew --info cleanTest build
+      run: ./gradlew --info -Pversion=2.0 cleanTest build
       
     - name: extract version
       id: extract-version
