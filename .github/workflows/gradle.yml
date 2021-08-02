@@ -61,7 +61,7 @@ jobs:
     env:
       image-version: ${{ needs.build.outputs.jar-version }}-${{ github.run_number }}
     steps:
-      - run: echo "deploying $({env.image-version)}"
+      - run: echo "deploying ${{env.image-version}}"
 
   integration-test:
     needs:
