@@ -42,7 +42,7 @@ jobs:
       run: ./gradlew --info cleanTest build
       
     - name: extract version
-      run: echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \(.*\)$/\1/p')
+      run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
       
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1.19
