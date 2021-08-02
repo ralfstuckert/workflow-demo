@@ -42,7 +42,7 @@ jobs:
       run: ./gradlew --info build
       
     - name: Publish Unit Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1
+      uses: EnricoMi/publish-unit-test-result-action@v1.19
       if: github.event_name != 'pull_request' && always()
       with:
         files: build/test-results/test/*.xml
