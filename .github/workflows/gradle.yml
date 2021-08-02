@@ -46,3 +46,15 @@ jobs:
       if: github.event_name != 'pull_request' && always()
       with:
         files: build/test-results/test/*.xml
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploying"
+
+  integration-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "running tests"
+      
+  
