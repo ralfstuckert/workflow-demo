@@ -16,6 +16,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    outputs:
+      jar-version: ${{ steps.extract-version.outputs.version }}
+
     steps:
     - uses: actions/checkout@v2
     
@@ -42,6 +45,7 @@ jobs:
       run: ./gradlew --info cleanTest build
       
     - name: extract version
+      id: extract-version
       run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
       
     - name: Publish Unit Test Results
@@ -51,11 +55,17 @@ jobs:
         files: build/test-results/test/*.xml
 
   deploy:
+    needs:
+     - build
     runs-on: ubuntu-latest
+    env:
+      image-version: ${{ needs.build.outputs.jar-version }}-${{ github.run_number }}
     steps:
-      - run: echo "deploying"
+      - run: echo "deploying $({env.image-version)}"
 
   integration-test:
+    needs:
+     - deploy
     runs-on: ubuntu-latest
     steps:
       - run: echo "running tests"
