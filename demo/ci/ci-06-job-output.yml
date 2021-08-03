@@ -11,6 +11,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    outputs:
+      jar-version: ${{ steps.extract-version.outputs.version }}
+
     steps:
       - uses: actions/checkout@v2
 
@@ -35,4 +38,29 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew --info -Pversion=2.0 cleanTest build
+
+      - name: extract version
+        id: extract-version
+        run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.19
+        if: always()
+        with:
+          files: build/test-results/test/*.xml
+
+  deploy:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploying version ${{needs.build.outputs.jar-version}}"
+
+  integration-test:
+    needs:
+      - deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "running tests"
+
 

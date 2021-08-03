@@ -36,3 +36,24 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew --info -Pversion=2.0 cleanTest build
 
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.19
+        if: always()
+        with:
+          files: build/test-results/test/*.xml
+
+  deploy:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploying"
+
+  integration-test:
+    needs:
+      - deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "running tests"
+
+
