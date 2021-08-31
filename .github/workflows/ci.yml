@@ -62,19 +62,19 @@ jobs:
 #        path: '**/build/test-results/test/TEST-*.xml'
 #        reporter: java-junit                # Format of test results
         
-  deploy:
-    needs:
-     - build
-    runs-on: ubuntu-latest
-    environment: develop
-    steps:
-      - run: echo "deploying version ${{needs.build.outputs.jar-version}} using key ${{secrets.DEPLOY_KEY}}"
+#  deploy:
+#    needs:
+#     - build
+#    runs-on: ubuntu-latest
+#    environment: develop
+#    steps:
+#      - run: echo "deploying version ${{needs.build.outputs.jar-version}} using key ${{secrets.DEPLOY_KEY}}"
 
-  integration-test:
-    needs:
-     - deploy
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "running tests"
+#  integration-test:
+#    needs:
+#     - deploy
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: echo "running tests"
       
   
