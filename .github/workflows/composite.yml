@@ -1,0 +1,13 @@
+name: Java CI with Gradle using composite action
+
+on:
+  workflow_dispatch:
+    
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: ralfstuckert/composite-action
