@@ -56,7 +56,7 @@ jobs:
       with:
         artifact: test-results              # artifact name
         name: JUnit Tests                   # Name of the check run which will be created
-        path: 'build/test-results/test/*.xml'
+        path: '**/build/test-results/test/TEST-*.xml'
         reporter: java-junit                # Format of test results
         
   deploy:
