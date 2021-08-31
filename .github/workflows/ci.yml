@@ -26,8 +26,8 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         server-id: 'anypoint-exchange-v2'
-        server-username: ${{ secrets.SECRET_1 }}
-        server-password: ${{ secrets.SECRET_2 }}
+        server-username: MULE_USER
+        server-password: MULE_PW
 
     - name: show settings.xml
       run: | 
