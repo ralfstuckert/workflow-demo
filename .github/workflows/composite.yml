@@ -13,3 +13,11 @@ jobs:
     - uses: ralfstuckert/composite-action@main
       id: composite
     - run: echo ${{ steps.composite.outputs.jar-version }}
+    
+    - uses: dorny/test-reporter@v1.5.0
+      with:
+        artifact: test-results              # artifact name
+        name: JUnit Tests                   # Name of the check run which will be created
+        path: build/test-results/test/*.xml # Path to test results (inside artifact .zip)
+        reporter: java-junit                # Format of test results
+        
