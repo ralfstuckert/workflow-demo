@@ -14,6 +14,8 @@ jobs:
       id: composite
     - run: echo ${{ steps.composite.outputs.jar-version }}
     
+    - run: ls -al build/test-results/test
+    
     - uses: dorny/test-reporter@v1.5.0
       with:
         artifact: test-results              # artifact name
