@@ -23,6 +23,10 @@ jobs:
       id: composite
     - run: echo ${{ steps.composite.outputs.jar-version }}
     
+    - name: Build with Gradle
+      shell: bash
+      run: ./gradlew --info -Pversion=2.0 cleanTest build
+      
     - run: ls -al build/test-results/test
     
     - name: Publish Unit Test Results
