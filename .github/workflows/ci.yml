@@ -46,11 +46,11 @@ jobs:
       id: extract-version
       run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
       
-    - name: Publish Unit Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1.19
-      if: always()
-      with:
-        files: build/test-results/test/*.xml
+#    - name: Publish Unit Test Results
+#      uses: EnricoMi/publish-unit-test-result-action@v1.19
+#      if: always()
+#      with:
+#        files: build/test-results/test/*.xml
 
 #    - uses: dorny/test-reporter@v1.5.0
 #      with:
