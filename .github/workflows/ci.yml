@@ -31,8 +31,8 @@ jobs:
 
     - name: show settings.xml
       run: | 
-        ls -al
-        cat settings.xml
+        ls -al $HOME/.m2
+        cat $HOME/.m2/settings.xml
 
     - name: Cache Gradle packages
       uses: actions/cache@v2
