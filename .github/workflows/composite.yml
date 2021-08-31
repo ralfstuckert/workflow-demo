@@ -33,9 +33,9 @@ jobs:
       shell: bash
       run: chmod +x gradlew
 
-    - uses: ralfstuckert/composite-action@main
-      id: composite
-    - run: echo ${{ steps.composite.outputs.jar-version }}
+#    - uses: ralfstuckert/composite-action@main
+#      id: composite
+#    - run: echo ${{ steps.composite.outputs.jar-version }}
     
     - name: Build with Gradle
       shell: bash
