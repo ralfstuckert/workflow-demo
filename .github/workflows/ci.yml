@@ -25,14 +25,6 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-        server-id: 'anypoint-exchange-v2'
-        server-username: MULE_USER
-        server-password: MULE_PW
-
-    - name: show settings.xml
-      run: | 
-        ls -al $HOME/.m2
-        cat $HOME/.m2/settings.xml
 
     - name: Cache Gradle packages
       uses: actions/cache@v2
