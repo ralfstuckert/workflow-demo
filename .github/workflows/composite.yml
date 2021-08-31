@@ -45,9 +45,9 @@ jobs:
       with:
         files: build/test-results/test/*.xml
 
-    - uses: ralfstuckert/composite-action@main
-      id: composite
-    - run: echo ${{ steps.composite.outputs.jar-version }}
+ #   - uses: ralfstuckert/composite-action@main
+ #     id: composite
+ #   - run: echo ${{ steps.composite.outputs.jar-version }}
     
 #    - uses: dorny/test-reporter@v1.5.0
 #      with:
