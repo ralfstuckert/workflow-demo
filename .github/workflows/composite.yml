@@ -11,7 +11,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:    
+    steps:
     - uses: ralfstuckert/composite-action@main
       id: composite
     - run: echo ${{ steps.composite.outputs.jar-version }}
