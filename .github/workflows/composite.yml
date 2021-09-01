@@ -1,8 +1,8 @@
 name: Java CI with Gradle using composite action
 
 on:
-#  push:
-#    branches: [ main ]
+  push:
+    branches: [ main ]
   workflow_dispatch:
     
 
