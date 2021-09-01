@@ -15,6 +15,7 @@ jobs:
     - uses: ralfstuckert/composite-action@main
       id: composite
     - run: echo ${{ steps.composite.outputs.jar-version }}
+    - run: cat build/test-results/test/TEST-com.github.ralfstuckert.workflowdemo.WorkflowDemoApplicationTests.xml
     
 #    - uses: dorny/test-reporter@v1.5.0
 #      with:
