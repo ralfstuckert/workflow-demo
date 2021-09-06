@@ -18,6 +18,7 @@ jobs:
       jar-version: ${{ steps.extract-version.outputs.version }}
 
     steps:
+    
     - uses: actions/checkout@v2
     
     - name: Set up JDK 11
@@ -57,8 +58,9 @@ jobs:
    needs: 
     - build
    runs-on: ubuntu-latest
+   environment: develop
    steps:
-     - run: echo "deploying version ${{needs.build.outputs.jar-version}}"
+     - run: echo "deploying version ${{needs.build.outputs.jar-version}} using secret using key ${{secrets.DEPLOY_KEY}}"
 
   integration-test:
     needs:
