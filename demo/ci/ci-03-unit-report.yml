@@ -34,7 +34,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew --info -Pversion=2.0 cleanTest build
+        run: ./gradlew cleanTest build
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.19
