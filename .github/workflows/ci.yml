@@ -47,11 +47,15 @@ jobs:
         
         
   deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "deploying"
+   needs: 
+    - build
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "deploying"
 
   integration-test:
+    needs:
+     - deploy
     runs-on: ubuntu-latest
     steps:
       - run: echo "running tests"
