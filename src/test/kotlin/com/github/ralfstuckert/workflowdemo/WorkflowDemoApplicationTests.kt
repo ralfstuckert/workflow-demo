@@ -9,7 +9,7 @@ class WorkflowDemoApplicationTests {
 
 	@Test
 	fun contextLoads() {
-//		fail("yikes")
+		fail("yikes")
 	}
 
 }
