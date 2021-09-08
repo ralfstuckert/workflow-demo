@@ -18,6 +18,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
+        cache: maven
        
     - name: download jar
       run: mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get -DgroupId=com.github.ralfstuckert -DartifactId=workflow-demo -Dversion=1.0.0 -Dpackaging=jar
