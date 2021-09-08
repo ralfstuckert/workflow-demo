@@ -9,7 +9,7 @@
     <repositories>
         <repository>
             <id>github</id>
-            <url>https://maven.pkg.github.com/ralfstuckert/workflow-demo</url>
+            <url>https://maven.pkg.github.com/ralfstuckert</url>
             <snapshots><enabled>true</enabled></snapshots>
             <releases><enabled>true</enabled></releases>
         </repository>
