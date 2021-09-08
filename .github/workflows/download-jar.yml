@@ -20,7 +20,7 @@ jobs:
         distribution: 'adopt'
        
     - name: download jar
-      run: mvn dependency:get -DgroupId=com.github.ralfstuckert -DartifactId=workflow-demo -Dversion=1.0.0 -Dpackaging=jar
+      run: mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get -DgroupId=com.github.ralfstuckert -DartifactId=workflow-demo -Dversion=1.0.0 -Dpackaging=jar
       
     - run: ls -al
       
