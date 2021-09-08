@@ -8,7 +8,7 @@
 
     <repositories>
         <repository>
-            <id>github-dvag</id>
+            <id>github</id>
             <url>https://maven.pkg.github.com/ralfstuckert/*</url>
             <snapshots><enabled>true</enabled></snapshots>
             <releases><enabled>true</enabled></releases>
