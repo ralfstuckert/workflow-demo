@@ -21,7 +21,7 @@ jobs:
         cache: maven
        
     - name: download jar
-      run: mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get -DgroupId=com.github.ralfstuckert -DartifactId=workflow-demo -Dversion=1.0.0 -Dpackaging=jar
+      run: mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get -DgroupId=com.github.ralfstuckert -DartifactId=workflow-demo -Dversion=1.0.0 
       env:
         GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
         GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
