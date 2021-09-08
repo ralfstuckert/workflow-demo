@@ -23,7 +23,7 @@ jobs:
       run: mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get -DgroupId=com.github.ralfstuckert -DartifactId=workflow-demo -Dversion=1.0.0 -Dpackaging=jar
       env:
         GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
-        GITHUB_ACTOR: ${{ GITHUB_ACTOR }}
+        GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
 
     - run: ls -al
       
