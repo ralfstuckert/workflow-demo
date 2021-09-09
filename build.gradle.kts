@@ -37,7 +37,8 @@ tasks.withType<Test> {
 }
 
 tasks.getByName<Jar>("jar") {
-    enabled = false
+    classifier = ""
+    enabled = true
 }
 
 publishing {
