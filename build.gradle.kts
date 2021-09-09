@@ -37,7 +37,7 @@ tasks.withType<Test> {
 }
 
 tasks.getByName<Jar>("jar") {
-    classifier = ""
+//    classifier = ""
     enabled = true
 }
 
