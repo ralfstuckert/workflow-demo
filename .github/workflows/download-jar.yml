@@ -22,7 +22,7 @@ jobs:
     - run: cat $HOME/.m2/settings.xml
     
     - name: download jar
-      run: mvn -s $HOME/.m2/settings.xml org.apache.maven.plugins:maven-dependency-plugin:2.8:copy -DoutputDirectory=. -Dartifact=com.github.ralfstuckert:workflow-demo:1.0.0:jar 
+      run: mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:copy -DoutputDirectory=. -Dartifact=com.github.ralfstuckert:workflow-demo:1.0.0:jar 
       env:
         GITHUB_TOKEN: ${{ secrets.PACKAGES_PAT }}
         GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
