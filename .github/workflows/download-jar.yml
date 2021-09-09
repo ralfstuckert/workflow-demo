@@ -24,7 +24,7 @@ jobs:
     - name: download jar
       run: mvn -s $HOME/.m2/settings.xml org.apache.maven.plugins:maven-dependency-plugin:2.8:get -Ddest=./workflow-demo.jar -DgroupId=com.github.ralfstuckert -DartifactId=workflow-demo -Dversion=1.0.0 
       env:
-        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PACKAGES_PAT }}
         GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
 
     - run: ls -al
