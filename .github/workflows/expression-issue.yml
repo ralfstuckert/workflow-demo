@@ -9,5 +9,5 @@ jobs:
     steps:
     - name: echo if true
       run: echo "yeehaw"
-      if: ${{ !false }}
+      if: ( !false )
 
