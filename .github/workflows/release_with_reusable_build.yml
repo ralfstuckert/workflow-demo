@@ -1,0 +1,11 @@
+name: Release with reusable build
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    uses: ralfstuckert/workflow-demo/.github/workflows/reusable_build.yml@main        
+    with:
+      version: ${{github.event.release.tag_name}}
