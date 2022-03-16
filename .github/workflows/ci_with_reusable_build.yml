@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    uses: ralfstuckert/workflow-demo/.github/workflows/resuable_build.yml@main        
+    uses: ralfstuckert/workflow-demo/.github/workflows/reusable_build.yml@main        
         
   deploy:
    needs: 
