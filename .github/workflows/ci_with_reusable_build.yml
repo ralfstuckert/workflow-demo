@@ -1,0 +1,31 @@
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: Java CI with Gradle
+
+on:
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+  workflow_dispatch:
+    
+
+jobs:
+  build:
+    uses: ./resuable_build.yml@main        
+        
+  deploy:
+   needs: 
+    - build
+   runs-on: ubuntu-latest
+   environment: develop
+   steps:
+     - run: echo "deploying version ${{needs.build.outputs.jar-version}} using secret using key ${{secrets.DEPLOY_KEY}}"
+
+  integration-test:
+    needs:
+     - deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "running tests"
