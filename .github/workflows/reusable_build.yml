@@ -61,7 +61,7 @@ jobs:
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: extract version
-      if: ${{ inputs.version != '' }}
+      if: ${{ inputs.version == '' }}
       id: extract-version
       run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
 
