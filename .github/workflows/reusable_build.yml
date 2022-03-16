@@ -11,13 +11,13 @@ on:
     outputs:
        image-version: 
          description: "the built jar version"
-         value: ${{ inputs.version || jobs.build.outputs.jar-version }}
+         value: ${{ jobs.build.outputs.jar-version }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      jar-version: ${{ steps.extract-version.outputs.version }}
+      jar-version: ${{ inputs.version || steps.extract-version.outputs.version }}
     steps:
     - uses: actions/checkout@v2
     
@@ -64,4 +64,7 @@ jobs:
       if: ${{ inputs.version == '' }}
       id: extract-version
       run: "echo ::set-output name=version::$( ./gradlew properties | sed -n -e 's/^version: \\(.*\\)$/\\1/p' )"
+      
+    - name: show output
+      run: echo "version is ${{ inputs.version || steps.extract-version.outputs.version }}"
 
