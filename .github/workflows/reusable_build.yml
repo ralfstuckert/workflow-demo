@@ -9,7 +9,7 @@ on:
         default: ""
         required: false
     outputs:
-       image-version: 
+       jar-version: 
          description: "the built jar version"
          value: ${{ jobs.build.outputs.jar-version }}
 
