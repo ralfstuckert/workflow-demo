@@ -9,3 +9,18 @@ jobs:
     uses: ralfstuckert/workflow-demo/.github/workflows/reusable_build.yml@main        
     with:
       version: ${{github.event.release.tag_name}}
+
+  deploy:
+   needs: 
+    - build
+   runs-on: ubuntu-latest
+   environment: test
+   steps:
+     - run: echo "deploying version ${{needs.build.outputs.jar-version}} using secret using key ${{secrets.DEPLOY_KEY}}"
+
+  integration-test:
+    needs:
+     - deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "running tests"
