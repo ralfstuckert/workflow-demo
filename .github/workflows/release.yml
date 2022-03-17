@@ -39,3 +39,18 @@ jobs:
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+  deploy:
+   needs: 
+    - build
+   runs-on: ubuntu-latest
+   environment: develop
+   steps:
+     - run: echo "deploying version ${{github.event.release.tag_name}} using secret using key ${{secrets.DEPLOY_KEY}}"
+
+  integration-test:
+    needs:
+     - deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "running tests"
