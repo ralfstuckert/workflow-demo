@@ -39,13 +39,13 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
-    - name: Build CI with Gradle
-      if: ${{ inputs.version == '' }}
-      run: ./gradlew cleanTest build
-
-    - name: Build release with Gradle
+    - name: gradle flags
       if: ${{ inputs.version != '' }}
-      run: gradle -Pversion=${{github.event.release.tag_name}} build
+      id: gradle-flags
+      run: "echo ::set-output name=version::-Pversion=${{inputs.version}}"
+      
+    - name: Build release with Gradle
+      run: gradle ${{steps.gradle-flags.version}} build
 
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1.19
@@ -54,8 +54,7 @@ jobs:
         files: build/test-results/test/*.xml
           
     - name: Publish to GitHub Packages
-      if: ${{ inputs.version != '' }}
-      run: gradle -Pversion=${{github.event.release.tag_name}} publish
+      run: gradle ${{steps.gradle-flags.version}} publish
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
