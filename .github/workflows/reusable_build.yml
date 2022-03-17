@@ -45,7 +45,7 @@ jobs:
       run: "echo ::set-output name=version::-Pversion=${{inputs.version}}"
       
     - name: Build release with Gradle
-      run: gradle ${{steps.gradle-flags.version}} build
+      run: gradle ${{steps.gradle-flags.outputs.version}} build
 
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1.19
@@ -54,7 +54,7 @@ jobs:
         files: build/test-results/test/*.xml
           
     - name: Publish to GitHub Packages
-      run: gradle ${{steps.gradle-flags.version}} publish
+      run: gradle ${{steps.gradle-flags.outputs.version}} publish
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
